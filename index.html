@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ijebu Rewa Blog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: whitesmoke;
+  color: green;
+  position: relative;
+  z-index: 1000;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-area img,
+header img {
+  width: 40px;
+  height: auto;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #004225;
+  font-weight: bold;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #004225;
+  cursor: pointer;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    background-color: orangered;
+    display: none;
+    padding: 20px 0;
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex !important;
+  }
+
+  nav a {
+    color: white;
+    padding: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Desktop Navigation Reset */
+@media screen and (min-width: 769px) {
+  nav {
+    display: flex !important;
+    position: static;
+    background: transparent;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* Hero Section - Swiper Slider */
+.swiper {
+  width: 100%;
+  height: 90vh;
+  margin-top: 0px;
+}
+
+.swiper-slide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 5px #000;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.hero-text p {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  max-width: 300px;
+}
+
+/* Section Wrapper */
+.section {
+  padding: 4rem 2rem;
+}
+
+/* Image Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Blog Post / Card */
+.post {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.post img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.like-btn {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #444;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.like-btn.liked {
+  color: red;
+}
+
+/* Comment Form */
+.comment-form {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  padding: 8px 12px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+}
+.event-post {
+    display: grid;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+          <img src="logo.png" alt="Ijebu Rewa Logo" />
+          <h2>Ìjẹ̀bú Rewà</h2>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav id="nav-links" class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#blog">Blogs</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#events">Events</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+      
+<!-- Hero Carousel -->
+<div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url('ij10.jpg')">
+        <div class="hero-text">
+          <h1>Welcome to Ijebu Rewa</h1>
+          <p>Preserving Ijebu Culture, History, and Heritage</p>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image:url('ij12.jpg')">
+        <div class="hero-text">
+          <h1>Ojude Oba Festival</h1>
+          <p>Color. Culture. Royalty.</p>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image:url('ij14.jpg')">
+        <div class="hero-text">
+          <h1>Explore Ijebu Stories</h1>
+          <p>From the past to the future</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="swiper-pagination"></div>
+  </div>
+  
+  <section id="blog" class="section" data-aos="fade-right">
+    <h2>Latest Blog Posts</h2>
+    <div class="gallery">
+      <div class="post">
+        <img src="ijblog1.jpg" alt="Ijebu History" />
+        <h3>Origin of Ijebu Kingdom</h3>
+        <p>A deep dive into the historic roots of Ijebuland and its kingship structure...</p>
+      </div>
+      <div class="post">
+        <img src="ijblog2.jpg" alt="Ojude Oba" />
+        <h3>Inside the Ojude Oba Festival</h3>
+        <p>The beauty, the culture, and the significance of Ojude Oba in Ijebu tradition.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Gallery -->
+  <section id="gallery" class="section" data-aos="fade-up">
+    <h2 >Ijebu Culture Gallery</h2>
+    <div class="gallery">
+      <img src="ij15.jpg" alt="Ijebu 1" />
+      <img src="ij8.jpg" alt="Ijebu 2" />
+      <img src="ij9.jpg" alt="Ijebu 3" />
+    </div>
+  </section>
+
+  <section id="events" class="section" data-aos="fade-up">
+
+    <h2>Events</h2>
+  
+    <div class="event-post">
+      <img src="ij9.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
+      <h3>2025 Ojude Oba Celebration</h3>
+      <p>Date: July 10, 2025</p>
+      <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+  
+      <div class="comments">
+        <strong>Comments:</strong>
+      </div>
+
+      <div class="event-post">
+        <img src="ijebu ode th.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
+        <h3>Ijebu Ode Talent Hunt</h3>
+        <p>Date: July 10, 2025</p>
+        <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+    
+
+        <div class="event-post">
+            <img src="ij21.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
+            <h3>BALOGUN KUKU DOCUMENTARY GOES TO THE CINEMA
+
+                When you talk about Ojude Oba, the story is not complete without Balogun Kuku.
+                Let’s go watch the documentary of the great Balogun Kuku</h3>
+            <p>Date: June 8, 2025</p>
+            <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+        <div class="comments">
+          <strong>Comments:</strong>
+        </div>
+      <form class="comment-form">
+        <input type="text" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+      </form>
+    </div>
+  </section>
+  <section class="section" data-aos="fade-in" style="background: #004225; color: white; text-align:center;">
+    <h2>Join Our Newsletter</h2>
+    <p>Stay updated on Ijebu history, festivals, and blog content.</p>
+    <form style="margin-top: 1rem;">
+      <input type="email" placeholder="Enter your email" style="padding:10px; width:250px; border:none; border-radius:5px;" />
+      <button type="submit" style="padding:10px 20px; background:#f9a825; color:#fff; border:none; border-radius:5px;">Subscribe</button>
+    </form>
+  </section>
+    <!-- Contact -->
+<section id="contact" class="section" data-aos="fade-right">
+    <h2>Contact Us</h2>
+    <p>Email: info@ijeburewa.com.ng | WhatsApp: +234 705 535 8535</p>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ijebu Rewa Blog. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  
+    // Like button logic
+    document.querySelectorAll('.like-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('liked');
+        const count = btn.querySelector('.count');
+        let num = parseInt(count.innerText);
+        count.innerText = btn.classList.contains('liked') ? num + 1 : num - 1;
+      });
+    });
+  
+    // Comment submission
+    document.querySelectorAll('.comment-form').forEach(form => {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const input = form.querySelector('input');
+        const commentBox = form.previousElementSibling;
+        if (input.value.trim()) {
+          const comment = document.createElement('p');
+          comment.textContent = input.value;
+          commentBox.appendChild(comment);
+          input.value = '';
+        }
+      });
+    });
+  </script>
+  <script>
+    // Toggle menu
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+      document.getElementById("nav-links").classList.toggle("active");
+    });
+  </script>
+  
+</body>
+</html>
