@@ -6,6 +6,10 @@
   <title>Ijebu Rewa Blog</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
 
   <style>
 * {
@@ -13,6 +17,28 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
+}
+:root {
+  --brand-red: #cc0000;
+  --brand-yellow: #f1c40f;
+  --brand-black: #000000;
+  --brand-dark: #111111;
+  --brand-bg: #fafafa;
+}
+button, .btn {
+  background-color: var(--brand-red);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--brand-yellow);
+  color: var(--brand-black);
 }
 
 html {
@@ -32,9 +58,14 @@ header {
   align-items: center;
   padding: 15px 30px;
   background-color: whitesmoke;
-  color: green;
+  color: var(--brand-red);
   position: relative;
   z-index: 1000;
+}
+h1, h2, .highlight {
+  color: var(--brand-black);
+  border-left: 5px solid var(--brand-yellow);
+  padding-left: 10px;
 }
 
 .logo-area {
@@ -45,7 +76,7 @@ header {
 
 .logo-area img,
 header img {
-  width: 40px;
+  width: 50px;
   height: auto;
 }
 
@@ -54,7 +85,9 @@ h2 {
   font-weight: bold;
   margin: 0;
 }
-
+p {
+  font-size: medium;
+}
 /* Navigation */
 nav {
   display: flex;
@@ -103,6 +136,20 @@ nav a {
     display: block;
   }
 }
+.hero-text {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .hero-text .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
 
 /* Desktop Navigation Reset */
 @media screen and (min-width: 769px) {
@@ -120,8 +167,8 @@ nav a {
 /* Hero Section - Swiper Slider */
 .swiper {
   width: 100%;
-  height: 90vh;
-  margin-top: 0px;
+  height: 100vh;
+  margin-top: 0;
 }
 
 .swiper-slide {
@@ -136,21 +183,32 @@ nav a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px 5px #000;
-  animation: fadeInUp 1.5s ease-out;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  animation: fadeInUp 1.2s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .hero-text h1 {
-  font-size: 50px;
-  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #FFD700;
+  margin-bottom: 20px;
 }
 
 .hero-text p {
-  font-size: 30px;
-  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin-bottom: 25px;
+  line-height: 1.6;
 }
+
 
 @keyframes fadeInUp {
   0% {
@@ -162,7 +220,6 @@ nav a {
     transform: translate(-50%, -50%);
   }
 }
-
 .slide-text {
   position: absolute;
   bottom: 30px;
@@ -244,138 +301,523 @@ nav a {
 
 /* Footer */
 footer {
+  background: var(--brand-black);
+  color: var(--brand-yellow);
   text-align: center;
-  padding: 2rem;
-  background-color: #f5f5f5;
 }
+
+footer a {
+  color: var(--brand-red);
+}
+
 .event-post {
     display: grid;
 }
+.section-title {
+  font-size: 2.2rem;
+  color: #111;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-left: 5px solid red;
+  padding-left: 10px;
+}
+
+.blog-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-content {
+  padding: 1rem;
+}
+
+.blog-content h3 {
+  font-size: 1.2rem;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.read-more-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: red;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background-color: black;
+}
+/* Category Filter Buttons */
+.category-filter {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.category-btn {
+  background-color: yellow;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-btn.active,
+.category-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Category Badge */
+.badge {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Specific Category Colors */
+.badge.culture { background-color: black; }
+.badge.events { background-color: red; }
+.badge.fashion { background-color: #ffcc00; } /* Yellow */
+.badge.food { background-color: #b30000; }
+.badge.news { background-color: #333; }
+.badge.trending { background-color: orangered; }
+.badge.ngo { background-color: #444; }
+.badge.others { background-color: #666; }
+
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.category-tabs .tab {
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.category-tabs .tab:hover,
+.category-tabs .tab.active {
+  background-color: red;
+  color: yellow;
+}
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-image {
+  text-align: center;
+}
+
+.circular {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid red;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background: black;
+  color: yellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-btn.red {
+  background-color: red;
+  color: white;
+}
+
+.contact-btn.yellow {
+  background-color: yellow;
+  color: black;
+}
+.site-footer {
+  background-color: black;
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-about,
+.footer-gallery,
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.footer-gallery-grid img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.footer-gallery-grid img:hover {
+  transform: scale(1.1);
+  border-color: yellow;
+}
+@media (max-width: 768px) {
+  .footer-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-gallery-grid img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
 </style>
 </head>
 <body>
     <header>
         <div class="logo-area">
           <img src="logo.png" alt="Ijebu Rewa Logo" />
-          <h2>Ìjẹ̀bú Rewà</h2>
+          <h2>Ìjẹ̀bú Rẹ̀wà</h2>
         </div>
         <div class="menu-toggle" id="menu-toggle">&#9776;</div>
         <nav id="nav-links" class="nav-links">
           <a href="#home">Home</a>
           <a href="#blog">Blogs</a>
+          <a href="#about">About</a>
           <a href="#gallery">Gallery</a>
           <a href="#events">Events</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
-      
 <!-- Hero Carousel -->
 <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image:url('ij10.jpg')">
-        <div class="hero-text">
-          <h1>Welcome to Ijebu Rewa</h1>
-          <p>Preserving Ijebu Culture, History, and Heritage</p>
-        </div>
-      </div>
-      <div class="swiper-slide" style="background-image:url('ij12.jpg')">
-        <div class="hero-text">
-          <h1>Ojude Oba Festival</h1>
-          <p>Color. Culture. Royalty.</p>
-        </div>
-      </div>
-      <div class="swiper-slide" style="background-image:url('ij14.jpg')">
-        <div class="hero-text">
-          <h1>Explore Ijebu Stories</h1>
-          <p>From the past to the future</p>
-        </div>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide swiper-lazy" style="background-image:url('img/agemo2.webp')">
+      <div class="hero-text">
+        <h1>Agemo Festival</h1>
+        <p>A sacred dance of the oracles – witness Ijebu spirituality in its truest form.</p>
+        <a href="#" class="btn">Learn More</a>
+
       </div>
     </div>
-  
-    <div class="swiper-pagination"></div>
+    <div class="swiper-slide" style="background-image:url('img/ij12.jpg')">
+      <div class="hero-text">
+        <h1>Ojude Oba Festival</h1>
+        <p>Behold Ijebu’s vibrant display of color, unity, and royalty before the Awujale.</p>
+        <a href="#ojude-oba" class="btn">Explore Event</a>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image:url('img/ij14.jpg')">
+      <div class="hero-text">
+        <h1>Preserving Ijebu Heritage</h1>
+        <p>Journey through generations of history, culture, and untold Ijebu legacies.</p>
+        <a href="#heritage" class="btn">Read Stories</a>
+      </div>
+    </div>
   </div>
-  
-  <section id="blog" class="section" data-aos="fade-right">
-    <h2>Latest Blog Posts</h2>
-    <div class="gallery">
-      <div class="post">
-        <img src="ij22.jpg" alt="Ijebu History" />
-        <h3>Origin of Ijebu Kingdom</h3>
-        <p>A deep dive into the historic roots of Ijebuland and its kingship structure...</p>
-      </div>
-      <div class="post">
-        <img src="ij23.jpg" alt="Ojude Oba" />
-        <h3>Inside the Ojude Oba Festival</h3>
-        <p>The beauty, the culture, and the significance of Ojude Oba in Ijebu tradition.</p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Gallery -->
-  <section id="gallery" class="section" data-aos="fade-up">
-    <h2 >Ijebu Culture Gallery</h2>
-    <div class="gallery">
-      <img src="ij15.jpg" alt="Ijebu 1" />
-      <img src="ij8.jpg" alt="Ijebu 2" />
-      <img src="ij9.jpg" alt="Ijebu 3" />
-    </div>
-  </section>
+  <div class="swiper-pagination"></div>
+</div>
 
-  <section id="events" class="section" data-aos="fade-up">
 
-    <h2>Events</h2>
+
   
-    <div class="event-post">
-      <img src="ij9.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
+<section id="blog" class="section" data-aos="fade-right">
+  <h2>Latest Blog Posts</h2>
+
+  <!-- Categories Filter Tabs -->
+  <div class="category-tabs">
+    <button class="tab active" data-category="all">All</button>
+    <button class="tab" data-category="culture">Culture</button>
+    <button class="tab" data-category="events">Events</button>
+    <button class="tab" data-category="fashion">Fashion</button>
+    <button class="tab" data-category="food">Food</button>
+    <button class="tab" data-category="news">News</button>
+    <button class="tab" data-category="trending">Trending Stories</button>
+    <button class="tab" data-category="ngo">NGO</button>
+  </div>
+
+  <!-- Blog Post Cards -->
+  <div class="gallery blog-posts">
+
+    <!-- Culture Post -->
+    <div class="post" data-category="culture">
+      <img src="img/ij21.jpg" alt="Ijebu Culture" />
+      <h3>Origin of Ijebu Kingdom</h3>
+      <p>Exploring the deep historical roots of the Ijebu monarchy...</p>
+    </div>
+
+    <!-- Events Post -->
+    <div class="post" data-category="events">
+      <img src="img/ij9.jpg" alt="Ojude Oba" />
       <h3>2025 Ojude Oba Celebration</h3>
-      <p>Date: July 10, 2025</p>
-      <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
-  
-      <div class="comments">
-        <strong>Comments:</strong>
-      </div>
+      <p>Cultural showcase in fashion and festivities...</p>
+    </div>
 
-      <div class="event-post">
-        <img src="ijebu ode th.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
-        <h3>Ijebu Ode Talent Hunt</h3>
-        <p>Date: July 10, 2025</p>
-        <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+    <!-- Fashion Post -->
+    <div class="post" data-category="fashion">
+      <img src="img/fashion1.jpg" alt="Ijebu Fashion" />
+      <h3>Ijebu Royal Fashion Styles</h3>
+      <p>Modern fashion inspired by Ijebu royalty attire.</p>
+    </div>
+
+    <!-- Food Post -->
+    <div class="post" data-category="food">
+      <img src="img/food1.jpg" alt="Ijebu Food" />
+      <h3>The Original Taste of Ijebu Garri</h3>
+      <p>Unpacking the pride of Ijebu delicacies and local recipes...</p>
+    </div>
+
+    <!-- News Post -->
+    <div class="post" data-category="news">
+      <img src="img/news1.jpg" alt="Ijebu News" />
+      <h3>Ijebu Youth Elected Into Ogun Assembly</h3>
+      <p>A milestone for young political representation in the region.</p>
+    </div>
+
+    <!-- Trending Post -->
+    <div class="post" data-category="trending">
+      <img src="img/trend1.jpg" alt="Trending" />
+      <h3>Ojude Oba Trend on TikTok</h3>
+      <p>The Ojude Oba festival is going viral — here's why.</p>
+    </div>
+
+    <!-- NGO Post -->
+    <div class="post" data-category="ngo">
+      <img src="img/ngo1.jpg" alt="NGO Activity" />
+      <h3>NGOs Driving Community Change</h3>
+      <p>Spotlight on Ijebu-based organizations making an impact.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="events" class="section" data-aos="fade-up">
+  <h2>Upcoming Events</h2>
+
+  <div class="gallery">
     
-
-        <div class="event-post">
-            <img src="ij21.jpg" alt="Ijebu Event" style="width:100%; max-width:500px;" />
-            <h3>BALOGUN KUKU DOCUMENTARY GOES TO THE CINEMA
-
-                When you talk about Ojude Oba, the story is not complete without Balogun Kuku.
-                Let’s go watch the documentary of the great Balogun Kuku</h3>
-            <p>Date: June 8, 2025</p>
-            <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
-        <div class="comments">
-          <strong>Comments:</strong>
-        </div>
+    <!-- Event 1 -->
+    <div class="post">
+      <img src="img/ij9.jpg" alt="Ojude Oba" />
+      <h3>2025 Ojude Oba Celebration</h3>
+      <p><strong>Date:</strong> July 10, 2025</p>
+      <p>A celebration of culture, fashion, and tradition in the Ijebu Kingdom.</p>
+      <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+      <div class="comments"><strong>Comments:</strong></div>
       <form class="comment-form">
         <input type="text" placeholder="Add a comment..." />
         <button type="submit">Post</button>
       </form>
     </div>
+
+    <!-- Event 2 -->
+    <div class="post">
+      <img src="img/ijebu ode th.jpg" alt="Talent Hunt" />
+      <h3>Ijebu Ode Talent Hunt</h3>
+      <p><strong>Date:</strong> July 10, 2025</p>
+      <p>Spotlight on raw talents in music, dance, and spoken word performances.</p>
+      <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+      <div class="comments"><strong>Comments:</strong></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+      </form>
+    </div>
+
+    <!-- Event 3 -->
+    <div class="post">
+      <img src="img/ij21.jpg" alt="Balogun Kuku Documentary" />
+      <h3>Balogun Kuku Documentary in Cinema</h3>
+      <p><strong>Date:</strong> June 8, 2025</p>
+      <p>Honoring the legacy of Balogun Kuku — the story behind Ojude Oba’s evolution.</p>
+      <div class="like-btn">❤️ Like (<span class="count">0</span>)</div>
+      <div class="comments"><strong>Comments:</strong></div>
+      <form class="comment-form">
+        <input type="text" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+    </div>
   </section>
-  <section class="section" data-aos="fade-in" style="background: #004225; color: white; text-align:center;">
-    <h2>Join Our Newsletter</h2>
-    <p>Stay updated on Ijebu history, festivals, and blog content.</p>
-    <form style="margin-top: 1rem;">
-      <input type="email" placeholder="Enter your email" style="padding:10px; width:250px; border:none; border-radius:5px;" />
-      <button type="submit" style="padding:10px 20px; background:#f9a825; color:#fff; border:none; border-radius:5px;">Subscribe</button>
-    </form>
+ 
+  <section id="about" class="section" data-aos="fade-up">
+    <h2>About Us</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <h3>Who We Are</h3>
+        <p>
+          We are a cultural movement committed to preserving, showcasing, and celebrating the heritage of Ijebu land. Through storytelling, events, fashion, and community engagement, we ensure our rich traditions thrive in the modern era.
+        </p>
+        <h3>Our Mission</h3>
+        <p>
+          To promote cultural awareness and inspire pride in our roots.
+        </p>
+        <h3>Our Vision</h3>
+        <p>
+          To be a global reference point for Ijebu heritage, innovation, and excellence.
+        </p>
+      </div>
+  
+      <div class="about-image">
+        <img src="img/ij20.jpg" alt="CEO Image" class="circular" />
+        <p><strong>Ijebu Rewa</strong><br/>Founder & Creative Lead</p>
+      </div>
+    </div>
   </section>
-    <!-- Contact -->
-<section id="contact" class="section" data-aos="fade-right">
+  
+  <section id="contact" class="section" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <p>Email: info@ijeburewa.com.ng | WhatsApp: +234 705 535 8535</p>
+    <p>We'd love to hear from you!</p>
+    
+    <div class="contact-container">
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+  
+      <div class="direct-links">
+        <a href="mailto:babafemiolawuni@gmail.com" class="contact-btn red">📧 Email Us</a>
+        <a href="https://wa.me/2349013656460" class="contact-btn yellow">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
   </section>
+  
   
 
   <!-- Footer -->
   <footer>
+    <section class="section" data-aos="fade-in" style="background: #004225; color: white; text-align:center;">
+      <h2>Join Our Newsletter</h2>
+      <p>Stay updated on Ijebu history, festivals, and blog content.</p>
+      <form style="margin-top: 1rem;">
+        <input type="email" placeholder="Enter your email" style="padding:10px; width:250px; border:none; border-radius:5px;" />
+        <button type="submit" style="padding:10px 20px; background:#f9a825; color:#fff; border:none; border-radius:5px;">Subscribe</button>
+      </form>
+      <h4>Gallery</h4>
+      <div class="footer-gallery-grid">
+        <img src="img/ojude1.jpg" alt="Ojude Oba" />
+        <img src="img/ij5.jpg" alt="Cultural Event" />
+        <img src="img/fashion2.jpg" alt="Ijebu Fashion" />
+        <img src="img/food2.jpg" alt="Ijebu Food" />
+      </div>
+    </div>
+
+    </section>
     <p>&copy; 2025 Ijebu Rewa Blog. All Rights Reserved.</p>
   </footer>
 
@@ -386,7 +828,7 @@ footer {
     new Swiper('.swiper', {
       loop: true,
       autoplay: {
-        delay: 3000,
+        delay: 4000,
       },
       pagination: {
         el: '.swiper-pagination',
@@ -423,6 +865,54 @@ footer {
     // Toggle menu
     document.getElementById("menu-toggle").addEventListener("click", function () {
       document.getElementById("nav-links").classList.toggle("active");
+    });
+  </script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
+  </script>
+  <script>
+    const filterButtons = document.querySelectorAll('.category-btn');
+    const blogCards = document.querySelectorAll('.blog-card');
+  
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelector('.category-btn.active').classList.remove('active');
+        button.classList.add('active');
+  
+        const category = button.getAttribute('data-category');
+  
+        blogCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    const tabs = document.querySelectorAll(".tab");
+    const posts = document.querySelectorAll(".post");
+  
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        // Remove active from all
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+  
+        const category = tab.getAttribute("data-category");
+  
+        posts.forEach(post => {
+          const postCategory = post.getAttribute("data-category");
+          if (category === "all" || postCategory === category) {
+            post.style.display = "block";
+          } else {
+            post.style.display = "none";
+          }
+        });
+      });
     });
   </script>
   

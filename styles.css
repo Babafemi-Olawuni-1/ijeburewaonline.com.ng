@@ -1,0 +1,57 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background-color: #004225;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+main {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.press-articles article {
+  background: white;
+  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.press-articles img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.press-articles h2 {
+  color: #004225;
+  margin-top: 0;
+}
+
+a {
+  color: #006600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #004225;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
